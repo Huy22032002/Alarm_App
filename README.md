@@ -1,6 +1,6 @@
 # Alarm_App
 Techstacks:
-1) React Native:
+1) React Native + Typescript:
      + React Navigation (not expo-router)
      + React Native Paper
 3) SQLite:
