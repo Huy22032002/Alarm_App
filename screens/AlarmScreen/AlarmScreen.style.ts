@@ -9,32 +9,15 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
-  },
-  headerBtn: {
-    marginTop: 20,
-    marginBottom: 8,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-  },
-  edit: {
-    fontSize: 16,
-    fontWeight: "500",
+    marginBottom: 32,
   },
   title: {
     fontSize: 24,
     fontWeight: "700",
   },
-  delete: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: "red",
-  },
   card: {
     marginBottom: 12,
-    borderRadius: 12,
+    borderRadius: 16,
   },
   cardContent: {
     flexDirection: "row",

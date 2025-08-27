@@ -20,7 +20,10 @@ const AlarmScreen = () => {
     return (
       <Card
         key={item.id}
-        style={[styles.card, { backgroundColor: theme.colors.green[500] }]}
+        style={[
+          styles.card,
+          { backgroundColor: theme.colors.green.thumbToggleActive },
+        ]}
         mode="contained"
       >
         <Card.Content style={styles.cardContent}>
@@ -35,18 +38,20 @@ const AlarmScreen = () => {
           <Toggle
             value={toggleValue}
             onPress={() => setToggleValue(!!toggleValue)}
-            thumbButton={
-              {
-                // inActiveBackgroundColor: theme.colors.green[900],
-                // activeBackgroundColor: theme.colors.green[100],
-              }
-            }
+            thumbButton={{
+              width: 34,
+              height: 34,
+              radius: 20,
+              inActiveBackgroundColor: theme.colors.green[900],
+              activeBackgroundColor: theme.colors.green[900],
+            }}
             trackBar={{
               width: 68,
               height: 36,
-              // activeBackgroundColor: theme.colors.white.main,
-              // inActiveBackgroundColor: theme.colors.grey.main,
+              activeBackgroundColor: theme.colors.white.main,
+              inActiveBackgroundColor: theme.colors.grey.main,
             }}
+            trackBarStyle={{ zIndex: -1 }}
           />
         </Card.Content>
       </Card>
@@ -56,7 +61,7 @@ const AlarmScreen = () => {
   return (
     <SafeAreaProvider>
       <LinearGradient
-        colors={[`${theme.colors.green.bg}`, `${theme.colors.green[900]}`]} // bạn có thể thêm nhiều màu
+        colors={[`${theme.colors.green.bg}`, `${theme.colors.green[700]}`]} // bạn có thể thêm nhiều màu
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={styles.safeContainer}
@@ -76,14 +81,6 @@ const AlarmScreen = () => {
               Sleep Alarms
             </Text>
           </View>
-          {/* button */}
-          <View style={styles.headerBtn}>
-            <Text style={[styles.edit, { color: theme.colors.white.main }]}>
-              Edit
-            </Text>
-            <Text style={styles.delete}>Delete</Text>
-          </View>
-
           {/* list Alarm */}
           <FlatList
             data={listAlarm}
