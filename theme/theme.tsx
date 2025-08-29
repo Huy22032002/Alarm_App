@@ -1,4 +1,5 @@
 import React, { createContext, useState, FC, useMemo, ReactNode } from "react";
+import { TextStyle } from "react-native";
 
 // --- Mode ---
 export type Mode = "dark" | "light";
@@ -8,16 +9,16 @@ export const tokens = (mode: Mode) =>
   mode === "dark"
     ? {
         green: {
-          100: "#528680",
-          900: "#192826",
+          100: "#558c86ff",
+          900: "#1b2c2aff",
           500: "#30504c",
           thumbToggleActive: "#375551",
           bg: "#192727",
           700: "#2b4541",
         },
         white: { main: "#FFFFFF", 500: "#acacacff" },
-        black: { main: "#192826", secondary: "#101010" },
-        grey: { main: "#585B5B" },
+        black: { main: "#192826", secondary: "#101010" }, //lunite
+        grey: { main: "#585B5B" }, //lunite
         red: { main: "#E57373" },
         blue: { main: "#64B5F6" },
       }
@@ -55,11 +56,43 @@ export const fontConfig = {
   thin: { fontFamily: "SF-Pro-Display-Thin" as FontFamily, fontWeight: "100" },
 };
 
+// --- Typography config ---
+export const createTextStyles = (colors: ReturnType<typeof tokens>) => ({
+  h1: {
+    // ...fonts.regular,
+    fontSize: 24,
+    color: colors.white.main,
+    fontWeight: "700" as TextStyle["fontWeight"],
+  },
+  h2: {
+    // ...fonts.medium,
+    fontSize: 20,
+    color: colors.white.main,
+    fontWeight: "700" as TextStyle["fontWeight"],
+  },
+  title: {
+    // ...fonts.regular,
+    fontSize: 16,
+    color: colors.red.main,
+  },
+  caption: {
+    // ...fonts.light,
+    fontSize: 12,
+    color: colors.grey.main,
+  },
+  songName: {
+    fontSize: 16,
+    color: colors.white.main,
+    fontWeight: "600" as TextStyle["fontWeight"],
+  },
+});
+
 // --- Theme interface ---
 export interface Theme {
   mode: Mode;
   colors: ReturnType<typeof tokens>;
   fonts: typeof fontConfig;
+  textStyles: ReturnType<typeof createTextStyles>;
 }
 
 // --- Context props ---
@@ -70,7 +103,12 @@ interface ThemeContextProps {
 
 // --- Theme Context ---
 export const ThemeContext = createContext<ThemeContextProps>({
-  theme: { mode: "light", colors: tokens("light"), fonts: fontConfig },
+  theme: {
+    mode: "light",
+    colors: tokens("light"),
+    fonts: fontConfig,
+    textStyles: createTextStyles(tokens("light")),
+  },
   toggleMode: () => {},
 });
 
@@ -87,7 +125,12 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     setMode((prev) => (prev === "light" ? "dark" : "light"));
 
   const theme = useMemo<Theme>(
-    () => ({ mode, colors: tokens(mode), fonts: fontConfig }),
+    () => ({
+      mode,
+      colors: tokens(mode),
+      fonts: fontConfig,
+      textStyles: createTextStyles(tokens(mode)),
+    }),
     [mode]
   );
 

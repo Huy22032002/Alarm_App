@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import WheelPickerExpo from "react-native-wheel-picker-expo";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 
 const AlarmPicker = () => {
   const [hour, setHour] = useState(7);

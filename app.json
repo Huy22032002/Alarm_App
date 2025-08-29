@@ -3,6 +3,14 @@
     "name": "MyAlarm",
     "slug": "MyAlarm",
     "version": "1.0.0",
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ]
+    ],
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Checkbox } from "react-native-paper";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 //constant
-import { DAYS, Day } from "../constant/day";
+import { DAYS, Day } from "../../constant/day";
 export default function RepeatAlarm() {
   //theme
   const { theme } = useTheme();
@@ -24,7 +24,9 @@ export default function RepeatAlarm() {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: theme.colors.green[700] }]}
+    >
       <View style={styles.checkboxContainer}>
         <Checkbox
           status={checked ? "checked" : "unchecked"}
@@ -77,6 +79,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 20,
     padding: 12,
+    marginTop: 8,
   },
   checkboxContainer: {
     flexDirection: "row",

@@ -1,8 +1,13 @@
 import { StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../hooks/useTheme";
 
-const HeaderCreateAlarm = ({ title, subtitle }) => {
+type HeaderCreateAlarmProps = {
+  title: string;
+  subtitle: string;
+};
+
+const HeaderCreateAlarm = ({ title, subtitle }: HeaderCreateAlarmProps) => {
   const { theme } = useTheme();
 
   return (
@@ -11,7 +16,7 @@ const HeaderCreateAlarm = ({ title, subtitle }) => {
         {title}
       </Text>
       <Text style={[styles.subtitle, { color: theme.colors.white[500] }]}>
-        {subtitle} "Ex: Ring in 23 hours 15 inutes"
+        {subtitle}"
       </Text>
     </View>
   );
